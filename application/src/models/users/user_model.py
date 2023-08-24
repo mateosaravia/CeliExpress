@@ -1,11 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, EmailStr
 
 def get_current_datetime():
     return datetime.now()
 
 class UserSchema(BaseModel):
-    name: str
-    email: str
-    password: str
+    name: str = Field(min_length=3, max_length=50)
+    email: EmailStr = Field(default=None, min_length=0)
+    password: str = Field(default=None, min_length=0)
     age: int = Field(ge=12)
     created_at: datetime = Field(default_factory=get_current_datetime)
