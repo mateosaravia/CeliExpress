@@ -7,5 +7,5 @@ async def login():
     pass
 
 @router.post("/logout")
-async def login():
+async def logout():
     pass
