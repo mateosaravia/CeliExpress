@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-import ...dependencies.users.user_dependencies as user_dependencies
-import ...services.users.user_service as user_service
-from ...schemas.users.user_schema import UserSchema
+
+import .user_dependencies
+from ..data_access.models.users.user_model import UserModel
+from ..data_access.schemas.users.user_schema import UserSchema
 
 router = FastAPI()
 
