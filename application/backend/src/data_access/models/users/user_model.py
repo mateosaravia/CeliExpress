@@ -1,5 +1,5 @@
-from sqlalchemy import Boolean, Column, Integer, String, Datetime
-from ...config.database import Base
+from sqlalchemy import Boolean, Column, Integer, String, DateTime
+from ....config.database import Base
 
 class UserModel(Base):
     __tablename__ = "users"
@@ -7,5 +7,5 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
-    registration_date = Column(Datetime)
+    registration_date = Column(DateTime)
     role = Column(String)

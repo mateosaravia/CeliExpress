@@ -2,8 +2,8 @@ from fastapi import FastAPI
 import uvicorn
 import secrets
 
-app = FastAPI()
+from .routers.users import user_router
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+app = FastAPI(root_path="/api")
+
+app.include_router(user_router.router)

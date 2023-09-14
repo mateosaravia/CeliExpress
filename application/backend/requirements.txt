@@ -4,3 +4,5 @@ uvicorn==0.23.2
 black==23.7.0
 pre-commit==3.4.0
 python-dotenv==1.0.0
+sqlalchemy==2.0.20
+mysqlclient==2.2.0
