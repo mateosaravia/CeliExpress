@@ -1,4 +1,4 @@
-from utils.exceptions.app_exception import AppExceptionCase
+from ..exceptions.app_exceptions import AppExceptionCase
 
 class ServiceResult(object):
     def __init__(self, arg):
@@ -17,8 +17,11 @@ class ServiceResult(object):
             return "[Success]"
         return f'[Exception] "{self.exception_case}"'
 
-    def __enter(self):
+    def __enter__(self):
         return self.value
+
+    def __exit__(self, *kwargs):
+        pass
 
 def handle_result(result: ServiceResult):
     if not result.success:
