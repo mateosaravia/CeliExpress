@@ -3,7 +3,7 @@ from ...config.database import Base
 from user_model import user
 
 class SupplierModel(Base):
-    __tablename__ = "supplier_details"
+    __tablename__ = "supplier_profiles"
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey(user.id))
