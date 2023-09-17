@@ -1,6 +1,6 @@
 from ....utils.exceptions.app_exceptions import AppExceptionCase
 
-class AppException(object):
+class UserException(object):
     class UserNotFound(AppExceptionCase):
         def __init__(self):
             status_code = 404

@@ -1,11 +1,9 @@
 from fastapi import APIRouter, Depends
 from ...utils.results.results_handler import handle_result
 
-from .user_dependencies import valid_user_post
-from ...data_access.models.users.user_model import UserModel
 from ...data_access.schemas.users.user_schema import UserSchema
 from ...services.users import user_service
-from ...utils.exceptions.users.user_exceptions import AppException
+from .user_dependencies import valid_user_post
 
 router = APIRouter()
 

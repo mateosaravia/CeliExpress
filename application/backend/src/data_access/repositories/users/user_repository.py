@@ -5,7 +5,7 @@ from ...schemas.users.user_schema import UserSchema
 
 db = get_db()
 
-async def add_user_to_db(user_item: UserSchema) -> UserModel:
+async def add_user(user_item: UserSchema) -> UserModel:
     user = UserModel(**user.dict())
     db.add(user)
     db.commit()
