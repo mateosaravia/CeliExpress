@@ -9,6 +9,6 @@ async def create_driver_profile(driver_data, user_id):
         return ServiceResult(DriverException.DriverProfileAlreadyExists())
 
     new_profile = DriverSchema(**driver_data)
-    added_profile = user_repository.add_driver_profile(new_profile, user_id)
+    added_profile = driver_repository.add_driver_profile(new_profile, user_id)
 
     return ServiceResult(added_profile)

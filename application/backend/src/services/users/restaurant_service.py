@@ -1,5 +1,14 @@
-from ...schemas.users.restaurant_schema import RestaurantSchema
+from ...data_access.schemas.users.restaurant_schema import RestaurantSchema
+from ...data_access.repositories.users import restaurant_repository
+from ...utils.results.results_handler import ServiceResult
+from ...utils.exceptions.users.restaurant_exceptions import RestaurantException
 
-def add_restaurant(restaurant):
-    new_restaurant = RestaurantSchema(**restaurant)
-    return new_restaurant
+async def create_restaurant_profile(restaurant_data, user_id):
+    exists = get_profile_by_user(user_id)
+    if exists:
+        return ServiceResult(RestaurantException.RestaurantProfileAlreadyExists())
+
+    new_profile = RestaurantSchema(**restaurant_data)
+    added_profile = restaurant_repository.add_restaurant_profile(new_profile, user_id)
+
+    return ServiceResult(added_profile)
