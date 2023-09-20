@@ -1,4 +1,4 @@
-from pydantic import Field
+from pydantic import Field, BaseModel
 
 class RestaurantSchema(BaseModel):
     address: str = Field(default=None, min_length=0)

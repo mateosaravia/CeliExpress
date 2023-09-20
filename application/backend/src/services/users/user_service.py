@@ -4,15 +4,11 @@ from ...utils.results.results_handler import ServiceResult
 from ...utils.exceptions.users.user_exceptions import UserException
 
 async def create_user(user_data):
-    exists = get_user_by_email(user_data.email)
+    print(user_data)
+    exists = await user_repository.get_user_by_email(user_data.email)
     if exists:
         return ServiceResult(UserException.UserAlreadyExists())
 
-    new_user = UserSchema(**user_data)
-    added_user = user_repository.add_user(new_user)
+    added_user = await user_repository.add_user(user_data)
 
     return ServiceResult(added_user)
-
-async def get_user_by_email(email):
-    user = user_repository.get_user_by_email(email)
-    return ServiceResult(user)

@@ -1,3 +1,8 @@
 from enum import Enum
 
-UserRoles = Enum("UserRoles", ["user", "admin", "supplier", "restaurant", "customer"])
+class UserRoles(Enum):
+    USER = "user"
+    ADMIN = "admin"
+    SUPPLIER = "supplier"
+    RESTAURANT = "restaurant"
+    CUSTOMER = "customer"

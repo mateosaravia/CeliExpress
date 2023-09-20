@@ -1,4 +1,4 @@
-from pydantic import Field
+from pydantic import Field, BaseModel
 
 class DriverSchema(BaseModel):
     authorized: bool = Field(default=False)
