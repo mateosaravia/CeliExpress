@@ -1,15 +1,14 @@
-from ....utils.exceptions.app_exceptions import AppExceptionCase
+from ....utils.exceptions.app_exceptions import AppException
 
-class SupplierException(Exception):
-    class SupplierProfileAlreadyExists(AppExceptionCase):
+class SupplierException(object):
+    class SupplierProfileAlreadyExists(AppException):
         def __init__(self):
             status_code = 409
             exception_case = "Supplier profile already exists"
-            AppExceptionCase.__init__(self, status_code, exception_case)
+            super().__init__(self, status_code, exception_case)
 
-
-    class SupplierProfileNotFound(AppExceptionCase):
+    class SupplierProfileNotFound(AppException):
         def __init__(self):
             status_code = 404
             exception_case = "Supplier profile not found"
-            AppExceptionCase.__init__(self, status_code, exception_case)
+            super().__init__(self, status_code, exception_case)

@@ -1,15 +1,14 @@
-from ....utils.exceptions.app_exceptions import AppExceptionCase
+from ....utils.exceptions.app_exceptions import AppException
 
 class RestaurantException(Exception):
-    class RestaurantProfileAlreadyExists(AppExceptionCase):
+    class RestaurantProfileAlreadyExists(AppException):
         def __init__(self):
             status_code = 409
             exception_case = "Restaurant profile already exists"
-            AppExceptionCase.__init__(self, status_code, exception_case)
+            super().__init__(self, status_code, exception_case)
 
-
-    class RestaurantProfileNotFound(AppExceptionCase):
+    class RestaurantProfileNotFound(AppException):
         def __init__(self):
             status_code = 404
             exception_case = "Restaurant profile not found"
-            AppExceptionCase.__init__(self, status_code, exception_case)
+            super().__init__(self, status_code, exception_case)

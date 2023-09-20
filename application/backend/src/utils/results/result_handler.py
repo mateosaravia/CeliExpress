@@ -1,8 +1,8 @@
-from ..exceptions.app_exceptions import AppExceptionCase
+from ..exceptions.app_exceptions import AppException
 
-class ServiceResult(object):
+class Result(object):
     def __init__(self, arg):
-        if isinstance(arg, AppExceptionCase):
+        if isinstance(arg, AppException):
             self.success = False
             self.exception_case = arg.exception_case
             self.status_code = arg.status_code
@@ -12,18 +12,13 @@ class ServiceResult(object):
             self.status_code = None
         self.value = arg
 
-    def __str__(self):
-        if self.success:
-            return "[Success]"
-        return f'[Exception] "{self.exception_case}"'
-
     def __enter__(self):
         return self.value
 
     def __exit__(self, *kwargs):
         pass
 
-def handle_result(result: ServiceResult):
+def handle_result(result: Result):
     if not result.success:
         with result as exception:
             raise exception

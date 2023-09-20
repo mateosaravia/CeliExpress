@@ -14,4 +14,12 @@ async def add_user(user_data: UserSchema) -> UserModel:
 
 async def get_user_by_email(email: str) -> UserModel:
     user = db.query(UserModel).filter(UserModel.email == email).first()
-    return user
+    if user:
+        return user
+    return None
+
+async def get_user_by_username(username: str) -> UserModel:
+    user = db.query(UserModel).filter(UserModel.username == username).first()
+    if user:
+        return user
+    return None
