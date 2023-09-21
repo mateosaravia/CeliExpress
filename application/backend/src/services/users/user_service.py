@@ -4,17 +4,13 @@ from ...utils.results.result_handler import Result
 from ...utils.exceptions.users.user_exceptions import UserException
 
 async def create_user(user_data):
-    exists = await get_user(email)
+    exists = await get_user_by_field("email", user_data.email)
     if exists:
-        Result(UserException.UserAlreadyExists())
+        Result(UserException.UserAlreadyExists)
 
     added_user = await user_repository.add_user(user_data)
     return Result(added_user)
 
-async def get_user_by_email(email):
-    user = await user_repository.get_user_by_email(email)
-    return Result(user)
-
-async def get_user_by_username(username):
-    user = await user_repository.get_user_by_username(email)
+async def get_user_by_field(field, value):
+    user = await user_repository.get_user_by_field(field, value)
     return Result(user)

@@ -8,6 +8,6 @@ from .user_dependencies import valid_user_post
 router = APIRouter()
 
 @router.post("/signup", response_model=UserSchema)
-async def signup(user_data: UserSchema):
+async def signup(user_data: UserSchema = Depends(valid_user_post)):
     result = await user_service.create_user(user_data)
     return handle_result(result)

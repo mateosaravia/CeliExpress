@@ -12,14 +12,9 @@ async def add_user(user_data: UserSchema) -> UserModel:
     db.refresh(user)
     return user
 
-async def get_user_by_email(email: str) -> UserModel:
-    user = db.query(UserModel).filter(UserModel.email == email).first()
-    if user:
-        return user
-    return None
-
-async def get_user_by_username(username: str) -> UserModel:
-    user = db.query(UserModel).filter(UserModel.username == username).first()
+async def get_user_by_field(field: str, value) -> UserModel:
+    attribute = getattr(UserModel, field)
+    user = db.query(UserModel).filter(attribute == value).first()
     if user:
         return user
     return None
