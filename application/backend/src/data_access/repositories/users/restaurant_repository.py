@@ -15,3 +15,7 @@ async def add_restaurant_profile(restaurant_data: RestaurantSchema) -> Restauran
 async def get_restaurant_profile(user_id: int) -> RestaurantModel:
     restaurant = db.query(RestaurantModel).filter(RestaurantModel.user_id == user_id).first()
     return restaurant
+
+async def exists_restaurant_profile(user_id: int) -> bool:
+    exists = db.query(RestaurantModel).filter(RestaurantModel.user_id == user_id).first()
+    return exists is not None

@@ -9,5 +9,5 @@ router = APIRouter()
 
 @router.post("/supplier/profile", response_model=SupplierSchema)
 async def post_supplier_profile(supplier_data: SupplierSchema = Depends(valid_supplier_profile)):
-    supplier = await supplier_service.create_supplier_profile(supplier_data)
-    return handle_result(supplier)
+    result = await supplier_service.create_supplier_profile(supplier_data)
+    return handle_result(result)

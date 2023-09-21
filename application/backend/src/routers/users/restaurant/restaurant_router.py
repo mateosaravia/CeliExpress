@@ -9,5 +9,5 @@ router = APIRouter()
 
 @router.post("/restaurant/profile", response_model=RestaurantSchema)
 async def post_restaurant_profile(restaurant_data: RestaurantSchema = Depends(valid_restaurant_profile)):
-    restaurant = await restaurant_service.create_restaurant(restaurant_data)
+    restaurant = await restaurant_service.create_restaurant_profile(restaurant_data)
     return handle_result(restaurant)

@@ -6,7 +6,7 @@ from ...utils.exceptions.users.user_exceptions import UserException
 async def create_user(user_data):
     exists = await get_user_by_field("email", user_data.email)
     if exists:
-        Result(UserException.UserAlreadyExists)
+        return Result(UserException.UserAlreadyExists())
 
     added_user = await user_repository.add_user(user_data)
     return Result(added_user)

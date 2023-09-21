@@ -15,3 +15,7 @@ async def add_driver_profile(driver_data: DriverSchema) -> DriverModel:
 async def get_driver_profile(user_id: int) -> DriverModel:
     driver = db.query(DriverModel).filter(DriverModel.user_id == user_id).first()
     return driver
+
+async def exists_driver_profile(user_id: int) -> bool:
+    exists = db.query(DriverModel).filter(DriverModel.user_id == user_id).first()
+    return exists is not None

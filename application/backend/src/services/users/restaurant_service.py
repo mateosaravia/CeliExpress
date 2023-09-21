@@ -5,10 +5,11 @@ from ...utils.exceptions.users.restaurant_exceptions import RestaurantException
 
 async def create_restaurant_profile(restaurant_data):
     user_id = restaurant_data.user_id
-    exists = await restaurant_repository.get_restaurant_profile(user_id)
+    exists = await restaurant_repository.exists_restaurant_profile(user_id)
     if exists:
-        return Result(RestaurantException.RestaurantProfileAlreadyExists)
+        return Result(RestaurantException.RestaurantProfileAlreadyExists())
 
+    restaurant_data.authorized = False
     added_profile = await restaurant_repository.add_restaurant_profile(restaurant_data)
 
     return Result(added_profile)
