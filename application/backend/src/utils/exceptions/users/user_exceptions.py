@@ -16,5 +16,5 @@ class UserException(object):
     class UsernameAlreadyExists(AppException):
         def __init__(self):
             status_code = 409
-            exception_case = "This username is already been used"
+            exception_case = "This username has already been used"
             super().__init__(status_code, exception_case)
