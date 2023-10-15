@@ -20,5 +20,5 @@ async def login(login_credentials: SessionSchema):
     token = token_service.create_access_token(user.email, user.role)
     return Result(token)
 
-async def logout():
-    pass
+async def logout(token):
+    await token_serivce.black_list_token(token)
