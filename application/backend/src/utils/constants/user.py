@@ -6,3 +6,7 @@ class UserRoles(Enum):
     SUPPLIER = "supplier"
     RESTAURANT = "restaurant"
     CUSTOMER = "customer"
+
+class UserAttributes():
+    MAX_USERNAME_LENGTH = 20
+    MAX_USERNAME_LENGTH = 4

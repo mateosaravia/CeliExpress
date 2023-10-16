@@ -7,6 +7,6 @@ class RestaurantModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey(UserModel.id))
-    address = Column(String(128))
-    authorized = Column(Boolean)
-    phone = Column(String(20))
+    address = Column(String(128), nullable=False)
+    authorized = Column(Boolean, nullable=False)
+    phone = Column(String(20), nullable=False)

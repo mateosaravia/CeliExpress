@@ -7,6 +7,6 @@ class DriverModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey(UserModel.id))
-    license_plate = Column(String(40))
-    authorized = Column(Boolean)
-    phone = Column(String(20))
+    license_plate = Column(String(40), nullable=False)
+    authorized = Column(Boolean, nullable=False)
+    phone = Column(String(20), nullable=False)
