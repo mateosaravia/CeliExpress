@@ -16,7 +16,7 @@ def create_access_token(user_email, role):
         "role": role 
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm=JWT_ALGORITHM)
-    return token
+    return { "token": token }
 
 def verify_token(token):
     black_listed_token = check_black_list_token(token)
@@ -35,7 +35,7 @@ def verify_token(token):
 def black_list_token(token):
     redis_connection = redis.get_connection()
     expires = 12 * 60 * 60
-    redis_connection.set(token, "loggedOutToken", {EX: expires})
+    redis_connection.set(token, "loggedOutToken", ex=expires)
 
 def check_black_list_token(token):
     redis_connection = redis.get_connection()

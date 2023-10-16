@@ -18,3 +18,7 @@ async def create_user(user_data):
 async def get_user_by_field(field, value):
     user = await user_repository.get_user_by_field(field, value)
     return Result(user)
+
+async def exists_user_by_field(field, value):
+    exists = await user_repository.exists_user_by_field(field, value)
+    return Result(exists)

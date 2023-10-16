@@ -1,9 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, Header
 from ...utils.results.result_handler import handle_result
 
 from ...data_access.schemas.sessions.session_schema import SessionSchema
 from ...services.sessions import session_service
-from .session_dependencies import valid_user_login
+from .session_dependencies import valid_user_login, valid_user_token
 
 router = APIRouter()
 
@@ -13,6 +13,7 @@ async def login(credentials: SessionSchema):
     return handle_result(token)
 
 @router.post("/logout")
-async def logout(token):
+async def logout(authorization: str = Header()):
+    token = await valid_user_token(authorization)
     result = await session_service.logout(token)
     return handle_result(result)

@@ -21,4 +21,5 @@ async def login(login_credentials: SessionSchema):
     return Result(token)
 
 async def logout(token):
-    await token_serivce.black_list_token(token)
+    token_service.black_list_token(token)
+    return Result("Logged out successfully")

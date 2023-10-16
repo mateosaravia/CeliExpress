@@ -15,6 +15,9 @@ async def add_user(user_data: UserSchema) -> UserModel:
 async def get_user_by_field(field: str, value) -> UserModel:
     attribute = getattr(UserModel, field)
     user = db.query(UserModel).filter(attribute == value).first()
-    if user:
-        return user
-    return None
+    return user
+
+async def exists_user_by_field(field: str, value) -> bool:
+    attribute = getattr(UserModel, field)
+    exists = db.query(UserModel).filter(attribute == value).first() is not None
+    return exists

@@ -6,3 +6,9 @@ class SessionException(object):
             status_code = 401
             exception_case = "Invalid credentials"
             super().__init__(status_code, exception_case)
+
+    class InvalidToken(AppException):
+        def __init__(self):
+            status_code = 401
+            exception_case = "Invalid token"
+            super().__init__(status_code, exception_case)

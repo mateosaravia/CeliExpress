@@ -7,10 +7,12 @@ REDIS_PORT = os.environ.get("REDIS_PORT")
 _connection = None
 
 def create_connection():
+    global _connection
     _connection = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 def get_connection():
+    global _connection
     if _connection is None:
-        _connection = create_connection()
+        create_connection()
 
     return _connection
