@@ -10,12 +10,12 @@ async def post_product(product_data: ProductSchema = Depends(valid_product_post)
     post_result = await product_service.create_product(product_data)
     handle_result(post_result)
 
-@router.put("/products", response_model=ProductSchema)
-async def put_product(product_data: ProductSchema = Depends(valid_product_put)):
-    update_result = await product_service.update_product(product_data)
+@router.put("/products/{product_id}", response_model=ProductSchema)
+async def put_product(product_data: ProductSchema = Depends(valid_product_put), product_id: int):
+    update_result = await product_service.update_product(product_data, product_id)
     handle_result(update_result)
 
-@router.delete("/products")
-async def delete_product(product_data: ProductSchema = Depends(valid_product_delete)):
-    delete_result = await product_service.delete_product(product_data)
+@router.delete("/products/{product_id}")
+async def delete_product(product_id: int = Depends(valid_product_delete)):
+    delete_result = await product_service.delete_product(product_id)
     handle_result(delete_result)

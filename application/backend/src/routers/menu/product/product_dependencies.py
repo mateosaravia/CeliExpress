@@ -9,15 +9,15 @@ async def valid_product_post(product_data: ProductSchema) -> ProductSchema:
 
     return product_data
 
-async def valid_product_put(product_data: ProductSchema) -> ProductSchema:
-    exists_product = product_service.exists_product_by_field("id", product_data.id)
+async def valid_product_put(product_data: ProductSchema, product_id: int) -> ProductSchema:
+    exists_product = product_service.exists_product_by_field("id", product_id)
     if not exists_product:
         raise ProductException.ProductNotFound
 
     return product_data
 
-async def valid_product_delete(product_data: ProductSchema) -> ProductSchema: 
-        exists_product = product_service.exists_product_by_field("id", product_data.id)
+async def valid_product_delete(product_id: int) -> ProductSchema: 
+        exists_product = product_service.exists_product_by_field("id", product_id)
     if not exists_product:
         raise ProductException.ProductNotFound
 
