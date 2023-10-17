@@ -15,10 +15,14 @@ async def create_user(user_data):
     added_user = await user_repository.add_user(user_data)
     return Result(added_user)
 
-async def get_user_by_field(field, value):
+async def get_user_by_field(field: str, value: str or int):
     user = await user_repository.get_user_by_field(field, value)
     return Result(user)
 
-async def exists_user_by_field(field, value):
+async def exists_user_by_field(field: str, value: str or int):
     exists = await user_repository.exists_user_by_field(field, value)
     return Result(exists)
+
+async def update_user_role(user_id: int, role: str):
+    user = await user_repository.update_user_role(user_id, role)
+    return Result(user)

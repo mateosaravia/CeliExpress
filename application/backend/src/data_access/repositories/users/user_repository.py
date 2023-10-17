@@ -21,3 +21,10 @@ async def exists_user_by_field(field: str, value) -> bool:
     attribute = getattr(UserModel, field)
     exists = db.query(UserModel).filter(attribute == value).first() is not None
     return exists
+
+async def update_user_role(user_id: int, newRole: str) -> UserModel:
+    user = db.query(UserModel).filter(UserModel.id == user_id).first()
+    user.role = newRole
+    db.commit()
+    db.refresh(user)
+    return user
