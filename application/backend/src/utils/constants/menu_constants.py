@@ -1,4 +1,4 @@
-import enum
+from enum import Enum
 
 class MenuOptionCategories(Enum):
     STARTER = "starter"
