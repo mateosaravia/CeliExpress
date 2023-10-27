@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Header
-from ...utils.results.result_handler import handle_result
+from ....utils.results.result_handler import handle_result
 
-from ...data_access.schemas.menu.menu_option_schema import MenuOptionSchema
-from ...services.menu import menu_option_service
+from ....data_access.schemas.menu.menu_option_schema import MenuOptionSchema
+from ....services.menu import menu_option_service
 from .menu_option_dependencies import valid_menu_option_post, valid_menu_option_put, valid_menu_option_delete
 
 router = APIRouter()

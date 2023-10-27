@@ -9,6 +9,7 @@ from .routers.users.driver import driver_router
 from .routers.users.restaurant import restaurant_router
 from .routers.sessions import session_router
 from .routers.menu.product import product_router
+from .routers.menu.menu_option import menu_option_router
 
 from .utils.exceptions.app_exceptions import AppException, app_exception_handler
 from .utils.exceptions.request_exceptions import request_validation_exception_handler
@@ -32,3 +33,4 @@ app.include_router(driver_router.router)
 app.include_router(restaurant_router.router)
 app.include_router(session_router.router)
 app.include_router(product_router.router)
+app.include_router(menu_option_router.router)

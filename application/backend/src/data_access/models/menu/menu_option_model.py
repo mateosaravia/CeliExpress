@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, String, Column, Integer, ForeignKey
+from sqlalchemy import Boolean, String, Column, Integer, ForeignKey, Float
 from ....config.database import Base
 from ..users.supplier_model import SupplierModel
 
