@@ -1,5 +1,4 @@
 from pydantic import BaseModel, Field
-
 from ....utils.constants.menu_option_constants import MenuProductCategories
 
 class ProductSchema(BaseModel):
