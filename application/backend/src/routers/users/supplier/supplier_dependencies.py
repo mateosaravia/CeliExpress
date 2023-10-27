@@ -6,5 +6,4 @@ async def valid_supplier_profile(supplier_data: SupplierSchema) -> SupplierSchem
     user = await user_service.get_user_by_field("id", supplier_data.user_id)
     if user.value == None:
         raise UserException.UserNotFound
-
     return supplier_data
