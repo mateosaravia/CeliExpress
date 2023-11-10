@@ -6,4 +6,10 @@ class MenuOptionSchema(BaseModel):
     description: str = Field(default=None, min_length=10, max_length=200)
     price: float = Field(default=None, gt=0)
     available: bool = False
-    category: str = Field(default=MenuOptionCategories.OTHER.value, validate=lambda x: x in MenuOptionCategories.__dict__.values())
+    category: str 
+
+    @validator("category")
+    def check_category(cls, v):
+        if v not in MenuOptionCategories.__dict__.values():
+            raise ValueError('Invalid menu category')
+        return v

@@ -3,7 +3,7 @@ from ....config.database import Base
 from ..users.supplier_model import SupplierModel
 
 class MenuOptionModel(Base):
-    __tablename__ = "MenuOptions"
+    __tablename__ = "Menu_options"
 
     id = Column(Integer, primary_key=True, index=True)
     supplier_id = Column(Integer, ForeignKey(SupplierModel.id))
