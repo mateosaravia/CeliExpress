@@ -9,7 +9,7 @@ async def create_product(product: ProductSchema):
     return Result(added_product)
 
 async def update_product(product: ProductSchema, product_id: int):
-    updated_product = await product_repository.update_product(product, product_id)
+    updated_product = await product_repository.update_product(product_id, product)
     return Result(updated_product)
 
 async def delete_product(product_id: int):

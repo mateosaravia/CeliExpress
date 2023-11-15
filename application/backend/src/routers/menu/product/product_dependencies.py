@@ -18,4 +18,4 @@ async def valid_product_delete(product_id: int) -> ProductSchema:
     exists_product = await product_service.exists_product_by_field("id", product_id)
     if not exists_product.value:
         raise ProductException.ProductNotFound
-    return product_data
+    return product_id

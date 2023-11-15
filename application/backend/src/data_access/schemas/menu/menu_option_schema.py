@@ -1,4 +1,4 @@
-from pydantic import Field, BaseModel
+from pydantic import Field, BaseModel, validator
 from ....utils.constants.menu_constants import MenuOptionCategories
 
 class MenuOptionSchema(BaseModel):
@@ -8,8 +8,8 @@ class MenuOptionSchema(BaseModel):
     available: bool = False
     category: str 
 
-    @validator("category")
-    def check_category(cls, v):
-        if v not in MenuOptionCategories.__dict__.values():
-            raise ValueError('Invalid menu category')
+    @validator('category')
+    def validate_category(cls, v):
+        if v not in [category.value for category in MenuOptionCategories]:
+            raise ValueError("Invalid menu category")
         return v

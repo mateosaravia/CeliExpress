@@ -18,7 +18,8 @@ async def delete_product(product_id: int) -> ProductModel:
     db.commit()
     return product
 
-async def udpate_product(product_id: int, new_product_data: ProductSchema) -> ProductModel:
+async def update_product(product_id: int, new_product_data: ProductSchema) -> ProductModel:
+    print(new_product_data)
     product = db.query(ProductModel).filter(ProductModel.id == product_id).first()
     for field, value in new_product_data:
         setattr(product, field, value)
