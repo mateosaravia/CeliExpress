@@ -6,10 +6,6 @@ from ...data_access.repositories.users import user_repository
 from ...utils.exceptions.users.user_exceptions import UserException
 
 async def create_user(user_data):
-    exists = await get_user_by_field("email", user_data.email)
-    if exists.value is not None:
-        return Result(UserException.UserAlreadyExists())
-
     user_data.password = hasher.get_password_hash(user_data.password)
 
     added_user = await user_repository.add_user(user_data)

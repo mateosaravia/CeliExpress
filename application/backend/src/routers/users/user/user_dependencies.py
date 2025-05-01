@@ -1,10 +1,8 @@
 from ....services.users import user_service
 from ....utils.exceptions.users.user_exceptions import UserException
 from ....data_access.schemas.users.user_schema import UserSchema
-from ....utils.results.result_handler import Result, handle_result
 
 async def valid_user_post(user_data: UserSchema) -> UserSchema:
-    print("user_data: ", user_data)
     exists_user_with_same_email = await user_service.exists_user_by_field("email", user_data.email)
     if exists_user_with_same_email.value:
         raise UserException.UserAlreadyExists
