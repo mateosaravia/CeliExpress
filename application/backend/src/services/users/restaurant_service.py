@@ -1,0 +1,19 @@
+from ...data_access.schemas.users.restaurant_schema import RestaurantSchema
+from ...data_access.repositories.users import restaurant_repository
+from ...utils.results.result_handler import Result
+from ...utils.exceptions.users.restaurant_exceptions import RestaurantException
+
+from . import user_service
+
+async def create_restaurant_profile(restaurant_data):
+    user_id = restaurant_data.user_id
+    exists = await restaurant_repository.exists_restaurant_profile(user_id)
+    if exists:
+        return Result(RestaurantException.RestaurantProfileAlreadyExists())
+
+    restaurant_data.authorized = False
+    added_profile = await restaurant_repository.add_restaurant_profile(restaurant_data)
+
+    await user_service.update_user_role(user_id, "restaurant")
+
+    return Result(added_profile)

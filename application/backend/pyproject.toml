@@ -1,0 +1,32 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.py$'
+exclude = '''(
+    /(
+        \.git
+        | \.mypy_cache
+        | \.vscode
+        | __pycache__
+    )/
+    | ^\.
+    | _test\.py$
+)'''
+
+[tool.isort]
+profile = "black"
+
+[flake8]
+ignore = ["E203", "W503"]
+max-line-length = 88
+
+[mypy]
+plugins = ["fastapi-typed-orm.plugin"]
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+pytest-cov = "^2.10"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
